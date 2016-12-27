@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/inputInstructionMasterKey"
+            android:text="@string/inputMasterInstruction"
+            android:layout_marginBottom="8dp"/>
+
+        <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimaryDark"
+            android:layout_below="@+id/inputInstructionMasterKey"
+            android:layout_width="150dp"
+            android:padding="4dp"
+            android:layout_height="60dp"
+            android:id="@+id/editMasterKeyLayout">
+            <EditText
+                android:id="@+id/inputMasterKey"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/editMasterKeyLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/inputInstructionSsid"
+            android:text="@string/inputSsidInstruction"
+            android:layout_marginBottom="8dp"/>
+
+        <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimaryDark"
+            android:layout_below="@+id/inputInstructionSsid"
+            android:layout_width="150dp"
+            android:padding="4dp"
+            android:layout_height="60dp"
+            android:id="@+id/editSsidLayout">
+            <EditText
+                android:id="@+id/inputSsid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/editSsidLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/inputInstructionPassword"
+            android:text="@string/inputPasswordInstruction"
+            android:layout_marginBottom="8dp"/>
+
+        <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimaryDark"
+            android:layout_below="@+id/inputInstructionPassword"
+            android:layout_width="150dp"
+            android:padding="4dp"
+            android:layout_height="60dp"
+            android:id="@+id/editPasswordLayout">
+            <EditText
+                android:id="@+id/inputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/editPasswordLayout"
+            android:padding="8dp"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:text="@string/submit"
+                android:id="@+id/submitButton"
+                android:layout_marginRight="8dp"/>
+
+            <Button
+                android:layout_marginLeft="8dp"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_toRightOf="@+id/submitButton"
+                android:text="@string/cancel"
+                android:id="@+id/cancelButton"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

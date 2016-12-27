@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="masterDrawerList">
+        <item>@string/door_status</item>
+        <item>@string/forget_everything</item>
+        <item>@string/rate_me</item>
+    </string-array>
+
+    <string-array name="userDrawerList">
+        <item>@string/add_master</item>
+        <item>@string/forget_everything</item>
+        <item>@string/rate_me</item>
+    </string-array>
+
+</resources>
