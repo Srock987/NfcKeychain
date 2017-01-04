@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.pawel.nfckeychain.Guest;
 import com.pawel.nfckeychain.GuestListAdapter;
@@ -105,14 +106,19 @@ public class ManageGuestsActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (responseGuest.getId())
+                        if (responseGuest.equals(guest)){
+                            adapter.remove(guest);
+                            Log.d("NFCKeychaing","Guest delete success");
+                        }else {
+                            Log.d("NFCKeychaing","Guest delete failed");
+                        }
                     }
                 });
             }
 
             @Override
             public void onFailure(Call<Guest> call, Throwable t) {
-
+                Log.d("NFCKeychaing","Guest delete failed",t);
             }
         });
     }

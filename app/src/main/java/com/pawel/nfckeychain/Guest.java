@@ -6,9 +6,9 @@ package com.pawel.nfckeychain;
 
 public class Guest {
 
-    byte id;
-    String name;
-    String key;
+    private byte id;
+    private String name;
+    private String key;
 
     public Guest(byte aId, String aName, String aKey){
         id=aId;
@@ -16,19 +16,19 @@ public class Guest {
         key=aKey;
     }
 
-    byte getId(){
+    public byte getId(){
         return id;
     }
 
-    void setId(byte aId){
+    public void setId(byte aId){
         id = aId;
     }
 
-    String getName(){
+    public String getName(){
         return name;
     }
 
-    String getKey(){
+    public String getKey(){
         return key;
     }
 

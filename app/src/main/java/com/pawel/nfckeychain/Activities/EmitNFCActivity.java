@@ -1,5 +1,6 @@
 package com.pawel.nfckeychain.Activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.nfc.NdefMessage;
@@ -8,9 +9,11 @@ import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.pawel.nfckeychain.R;
+import com.pawel.nfckeychain.Utils;
 
 /**
  * Created by Pawel on 2016-12-05.
@@ -23,6 +26,9 @@ public class EmitNFCActivity extends AppCompatActivity {
     private static final String MESSAGE_KEY = "MESSAGE_KEY";
     private NdefMessage message;
     private String action;
+    public static int RESULT_FAIL = 0;
+    public static int RESULT_OK = 1;
+
 
     public static Intent startingIntent(Context context,String action, NdefMessage message){
         Bundle bundle = new Bundle();
@@ -61,6 +67,14 @@ public class EmitNFCActivity extends AppCompatActivity {
                         return message ;
                     }
                 }, this);
+
+        nfcAdapter.setOnNdefPushCompleteCallback(new NfcAdapter.OnNdefPushCompleteCallback() {
+            @Override
+            public void onNdefPushComplete(NfcEvent event) {
+                setResult(RESULT_OK);
+                finish();
+            }
+        },this);
     }
 
 

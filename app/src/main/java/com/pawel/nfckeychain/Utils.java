@@ -16,7 +16,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class Utils {
 
     public final static String MASTER_KEY = "MASTER_KEY";
-    public final static String NFC_TAG_RECIEVED_MASTER_INITALIZATION = "MASTER_INITALIZATION";
+    public final static String NFC_TAG_RECIEVED_MASTER_INITALIZATION = "MST_INIT";
     public final static String NFC_TAG_RECIEVED_DOOR_OPENING = "DOOR_OPENING";
     public final static String NFC_TAG_RECIEVED_GUEST_EMIT = "GUEST_EMIT";
 
@@ -77,28 +77,45 @@ public class Utils {
     }
 
     public static NdefRecord createStringRecord(String content){
-        String mimeType = "application/com.pawel.nfckeychain";//getString(R.string.mimeType);
+        String mimeType = "application/com.pawel.nfckeychain";
         byte[] mimeBytes = mimeType.getBytes(Charset.forName("US-ASCII"));
         byte[] payLoad = content.getBytes();
         return new NdefRecord(NdefRecord.TNF_MIME_MEDIA, mimeBytes, null, payLoad);
     }
 
+    public static NdefRecord createArduinoStringRecord(String content){
+        String mimeType = "a";
+        byte[] mimeBytes = mimeType.getBytes(Charset.forName("US-ASCII"));
+        byte[] payLoad = content.getBytes();
+        return new NdefRecord(NdefRecord.TNF_WELL_KNOWN, mimeBytes, null, payLoad);
+    }
+
     public static NdefRecord createByteRecord(byte content){
-        String mimeType = "application/com.pawel.nfckeychain"; //getString(R.string.mimeType);
+        String mimeType = "application/com.pawel.nfckeychain";
         byte[] mimeBytes = mimeType.getBytes(Charset.forName("US-ASCII"));
         byte[] payLoad = {content};
         return  new NdefRecord(NdefRecord.TNF_MIME_MEDIA, mimeBytes, null,
                 payLoad);
     }
 
+    public static NdefRecord creatArduinoByteRecord(byte content){
+        String mimeType = "a";
+        byte[] mimeBytes = mimeType.getBytes(Charset.forName("US-ASCII"));
+        byte[] payLoad = {content};
+        return  new NdefRecord(NdefRecord.TNF_WELL_KNOWN, mimeBytes, null,
+                payLoad);
+    }
+
+
+
     public static NdefMessage createOpenMessage(Guest guest) {
         //GENERATE OPEN DOOR NFC MESSAGE
         return new NdefMessage(
                 new NdefRecord[]{
-                        Utils.createStringRecord(Utils.NFC_TAG_RECIEVED_DOOR_OPENING),
-                        Utils.createStringRecord(guest.getName()),
-                        Utils.createStringRecord(guest.getKey()),
-                        Utils.createByteRecord(guest.getId())
+                        Utils.createArduinoStringRecord(Utils.NFC_TAG_RECIEVED_DOOR_OPENING),
+                        Utils.createArduinoStringRecord(guest.getName()),
+                        Utils.createArduinoStringRecord(guest.getKey()),
+                        Utils.creatArduinoByteRecord(guest.getId())
                 });
     }
 
@@ -107,10 +124,10 @@ public class Utils {
         //GENERATE INIT MASTER NFC MESSAGE
         return new NdefMessage(
                 new NdefRecord[]{
-                        createStringRecord(Utils.NFC_TAG_RECIEVED_MASTER_INITALIZATION),
-                        createStringRecord(masterPassword),
-                        createStringRecord(wifiSsid),
-                        createStringRecord(wifiPassword)
+                        createArduinoStringRecord(Utils.NFC_TAG_RECIEVED_MASTER_INITALIZATION),
+                        createArduinoStringRecord(masterPassword),
+                        createArduinoStringRecord(wifiSsid),
+                        createArduinoStringRecord(wifiPassword)
                 });
     }
 

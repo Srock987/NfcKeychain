@@ -17,6 +17,7 @@ import android.widget.ListView;
 
 import com.pawel.nfckeychain.Drawer.DrawerAdapter;
 import com.pawel.nfckeychain.Drawer.DrawerItems;
+import com.pawel.nfckeychain.Guest;
 import com.pawel.nfckeychain.R;
 import com.pawel.nfckeychain.Utils;
 
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements ListView.OnItemCl
     @Override
     protected void onResume() {
         super.onResume();
-        isMaster = true;// Utils.getMasterStatus(this);
+        isMaster = Utils.getMasterStatus(this);
         isKeySaved = Utils.getKeySavedStatus(this);
 
         initDrawerLayout();
@@ -90,8 +91,9 @@ public class MainActivity extends AppCompatActivity implements ListView.OnItemCl
         openButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Guest savedUser = getSavedUser(context);
                 Intent intent = EmitNFCActivity.startingIntent(context,Utils
-                        .NFC_TAG_RECIEVED_DOOR_OPENING,createOpenMessage(getSavedUser(context)));
+                        .NFC_TAG_RECIEVED_DOOR_OPENING,createOpenMessage(savedUser));
                 startActivity(intent);
             }
         });

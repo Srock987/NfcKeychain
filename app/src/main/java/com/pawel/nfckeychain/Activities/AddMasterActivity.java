@@ -25,6 +25,7 @@ import com.pawel.nfckeychain.Utils;
 public class AddMasterActivity extends AppCompatActivity {
 
     Context context;
+    private int addMasterRequestCode = 332;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class AddMasterActivity extends AppCompatActivity {
         NetworkInfo mWifi = connManager.getActiveNetworkInfo();
 
         if (mWifi.isConnected()){
-            WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+            WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
             WifiInfo wifiInfo = wifiManager.getConnectionInfo();
             String loadedSsid = wifiInfo.getSSID();
             if (loadedSsid.startsWith("\"") && loadedSsid.endsWith("\"")){
@@ -82,7 +83,16 @@ public class AddMasterActivity extends AppCompatActivity {
         NdefMessage message = Utils.createInitMasterMessage(masterKey,wiFiSsid,wifiPassword);
         Intent intent = EmitNFCActivity.startingIntent(context,Utils
                 .NFC_TAG_RECIEVED_MASTER_INITALIZATION,message);
-        startActivity(intent);
+        Toast.makeText(context,new String(message.getRecords()[3].getPayload()),Toast.LENGTH_LONG).show();
+        startActivityForResult(intent,addMasterRequestCode);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==addMasterRequestCode && resultCode == EmitNFCActivity.RESULT_OK){
+            Toast.makeText(context,"OBTAINED MASTER STATUS",Toast.LENGTH_LONG).show();
+            Utils.setMasterStatus(this,true);
+        }
+    }
 }
