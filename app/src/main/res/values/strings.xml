@@ -35,4 +35,7 @@
     <string name="enterName">Enter username</string>
     <string name="add">Add</string>
 
+    <string name="door">Door:</string>
+    <string name="lock">Lock:</string>
+
 </resources>

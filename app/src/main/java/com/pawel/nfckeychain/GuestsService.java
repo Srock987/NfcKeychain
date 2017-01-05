@@ -1,5 +1,7 @@
 package com.pawel.nfckeychain;
 
+import com.pawel.nfckeychain.Drawer.DoorState;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,6 +26,8 @@ public interface GuestsService {
     @POST("deleteGuest")
     Call<Guest> deleteGuest(@Body Guest guest);
 
+    @GET("doorState")
+    Call<DoorState> getDoorState();
 
 
      Retrofit retrofit = new Retrofit.Builder()

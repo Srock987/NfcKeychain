@@ -159,6 +159,8 @@ public class MainActivity extends AppCompatActivity implements ListView.OnItemCl
                 startActivity(intent);
                 break;
             case DOOR_STATUS:
+                Intent intent1 = new Intent(this,DoorStatusActivity.class);
+                startActivity(intent1);
                 break;
             case FORGET_EVERYTHING:
                 break;

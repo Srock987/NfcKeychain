@@ -15,6 +15,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class Utils {
 
+    public final static String MASTER_USER = "MASTER_USER";
     public final static String MASTER_KEY = "MASTER_KEY";
     public final static String NFC_TAG_RECIEVED_MASTER_INITALIZATION = "MST_INIT";
     public final static String NFC_TAG_RECIEVED_DOOR_OPENING = "DOOR_OPENING";
@@ -40,6 +41,10 @@ public class Utils {
         SharedPreferences sharedPreferences = context.getApplicationContext().getSharedPreferences
                 (myPreferences,MODE_PRIVATE);
         sharedPreferences.edit().putBoolean(masterStatus,setMaster).apply();
+        if(setMaster){
+            Guest masterUser = new Guest((byte)11,MASTER_USER,MASTER_KEY);
+            saveUser(context,masterUser);
+        }
     }
 
     public static boolean getKeySavedStatus(Context context){
