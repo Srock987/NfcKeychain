@@ -1,28 +1,20 @@
 package com.pawel.nfckeychain.Activities;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.pawel.nfckeychain.Guest;
-import com.pawel.nfckeychain.GuestListAdapter;
-import com.pawel.nfckeychain.GuestsService;
+import com.pawel.nfckeychain.CustomCreations.Guest;
+import com.pawel.nfckeychain.Adapters.GuestListAdapter;
+import com.pawel.nfckeychain.Services.GuestsService;
 import com.pawel.nfckeychain.R;
 
-import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 
 import retrofit2.Call;
 import retrofit2.Callback;

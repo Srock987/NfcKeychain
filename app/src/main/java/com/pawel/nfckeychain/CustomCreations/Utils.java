@@ -1,4 +1,4 @@
-package com.pawel.nfckeychain;
+package com.pawel.nfckeychain.CustomCreations;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,7 +15,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class Utils {
 
-    public final static String MASTER_USER = "MASTER_USER";
+    public final static String MASTER_USER = "MASTER";
     public final static String MASTER_KEY = "MASTER_KEY";
     public final static String NFC_TAG_RECIEVED_MASTER_INITALIZATION = "MST_INIT";
     public final static String NFC_TAG_RECIEVED_DOOR_OPENING = "DOOR_OPENING";
@@ -35,6 +35,12 @@ public class Utils {
                 (myPreferences,MODE_PRIVATE);
         boolean isMaster = sharedPreferences.getBoolean(masterStatus,false);
         return isMaster;
+    }
+
+    public static void erasePreferences(Context context){
+        SharedPreferences sharedPreferences = context.getApplicationContext().getSharedPreferences
+                (myPreferences,MODE_PRIVATE);
+        sharedPreferences.edit().clear().commit();
     }
 
     public static void setMasterStatus(Context context,boolean setMaster){

@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.pawel.nfckeychain.R;
-import com.pawel.nfckeychain.Utils;
+import com.pawel.nfckeychain.CustomCreations.Utils;
 
 /**
  * Created by Pawel on 2016-11-11.

@@ -1,6 +1,5 @@
 package com.pawel.nfckeychain.Activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.nfc.NdefMessage;
@@ -9,11 +8,9 @@ import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.pawel.nfckeychain.R;
-import com.pawel.nfckeychain.Utils;
 
 /**
  * Created by Pawel on 2016-12-05.

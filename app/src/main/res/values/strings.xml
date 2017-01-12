@@ -7,7 +7,8 @@
     <string name="add_master">Add master key</string>
     <string name="door_status">Door status</string>
     <string name="forget_everything">Forget everything</string>
-    <string name="rate_me">Rate me</string>
+    <string name="main_menu">Main menu</string>
+
 
     <string name="open">Open</string>
     <string name="receive_key">Receive key</string>
@@ -35,7 +36,7 @@
     <string name="enterName">Enter username</string>
     <string name="add">Add</string>
 
-    <string name="door">Door:</string>
-    <string name="lock">Lock:</string>
+    <string name="door">Door state:</string>
+    <string name="lock">Lock state:</string>
 
 </resources>

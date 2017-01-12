@@ -1,4 +1,4 @@
-package com.pawel.nfckeychain;
+package com.pawel.nfckeychain.Dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;

@@ -1,4 +1,4 @@
-package com.pawel.nfckeychain.Drawer;
+package com.pawel.nfckeychain.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.pawel.nfckeychain.CustomCreations.DrawerItems;
 import com.pawel.nfckeychain.R;
 
 /**

@@ -1,6 +1,7 @@
-package com.pawel.nfckeychain;
+package com.pawel.nfckeychain.Services;
 
-import com.pawel.nfckeychain.Drawer.DoorState;
+import com.pawel.nfckeychain.CustomCreations.DoorState;
+import com.pawel.nfckeychain.CustomCreations.Guest;
 
 import java.util.List;
 

@@ -18,7 +18,8 @@
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".Activities.MainActivity"
+            android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,17 +28,23 @@
 
         </activity>
 
-        <activity android:name=".Activities.AddMasterActivity"/>
+        <activity android:name=".Activities.AddMasterActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".Activities.ReceiveActivity"/>
+        <activity android:name=".Activities.ReceiveActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".Activities.EmitNFCActivity"/>
+        <activity android:name=".Activities.EmitNFCActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".Activities.ReceiveNFCActivity"/>
+        <activity android:name=".Activities.ReceiveNFCActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".Activities.ManageGuestsActivity"/>
+        <activity android:name=".Activities.ManageGuestsActivity"
+            android:screenOrientation="portrait"/>
 
-        <activity android:name=".Activities.DoorStatusActivity"/>
+        <activity android:name=".Activities.DoorStatusActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

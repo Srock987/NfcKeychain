@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,14 +16,14 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.pawel.nfckeychain.Drawer.DrawerAdapter;
-import com.pawel.nfckeychain.Drawer.DrawerItems;
-import com.pawel.nfckeychain.Guest;
+import com.pawel.nfckeychain.Adapters.DrawerAdapter;
+import com.pawel.nfckeychain.CustomCreations.DrawerItems;
+import com.pawel.nfckeychain.CustomCreations.Guest;
 import com.pawel.nfckeychain.R;
-import com.pawel.nfckeychain.Utils;
+import com.pawel.nfckeychain.CustomCreations.Utils;
 
-import static com.pawel.nfckeychain.Utils.createOpenMessage;
-import static com.pawel.nfckeychain.Utils.getSavedUser;
+import static com.pawel.nfckeychain.CustomCreations.Utils.createOpenMessage;
+import static com.pawel.nfckeychain.CustomCreations.Utils.getSavedUser;
 
 /**
  * Created by Pawel on 2016-11-03.
@@ -51,9 +52,12 @@ public class MainActivity extends AppCompatActivity implements ListView.OnItemCl
     @Override
     protected void onResume() {
         super.onResume();
+        createUI();
+    }
+
+    private void createUI(){
         isMaster = Utils.getMasterStatus(this);
         isKeySaved = Utils.getKeySavedStatus(this);
-
         initDrawerLayout();
         setupToolbar();
         setupDrawerToggle();
@@ -62,20 +66,32 @@ public class MainActivity extends AppCompatActivity implements ListView.OnItemCl
 
     private void initDrawerLayout(){
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        Resources resources = getResources();
         DrawerItems[] drawerList;
         if (isMaster){
-            drawerList = new DrawerItems[]{DrawerItems.DOOR_STATUS, DrawerItems
-                    .FORGET_EVERYTHING, DrawerItems.RATE_ME};
+            drawerList = new DrawerItems[]{DrawerItems.DOOR_STATUS, DrawerItems.EXIT, DrawerItems
+                    .FORGET_EVERYTHING};
         }else {
-            drawerList = new DrawerItems[]{DrawerItems.ADD_MASTER_KEY, DrawerItems
-                    .FORGET_EVERYTHING, DrawerItems.RATE_ME};
+            drawerList = new DrawerItems[]{DrawerItems.ADD_MASTER_KEY,DrawerItems.EXIT, DrawerItems
+                    .FORGET_EVERYTHING};
         }
 
         adapter = new DrawerAdapter(this, drawerList);
         ListView drawerListView = (ListView) findViewById(R.id.drawer_list);
         drawerListView.setAdapter(adapter);
         drawerListView.setOnItemClickListener(this);
+    }
+
+    private void closeDrawer(){
+        mDrawerLayout.closeDrawers();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
+            closeDrawer();
+        }else {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -155,16 +171,22 @@ public class MainActivity extends AppCompatActivity implements ListView.OnItemCl
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (adapter.getItem(position)){
             case ADD_MASTER_KEY:
+                closeDrawer();
                 Intent intent = new Intent(this,AddMasterActivity.class);
                 startActivity(intent);
                 break;
             case DOOR_STATUS:
+                closeDrawer();
                 Intent intent1 = new Intent(this,DoorStatusActivity.class);
                 startActivity(intent1);
                 break;
             case FORGET_EVERYTHING:
+                closeDrawer();
+                Utils.erasePreferences(this);
+                createUI();
                 break;
-            case RATE_ME:
+            case EXIT:
+                finishAffinity();
                 break;
             default:
                 break;

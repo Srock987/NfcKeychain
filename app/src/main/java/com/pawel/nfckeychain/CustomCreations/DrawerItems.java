@@ -1,4 +1,4 @@
-package com.pawel.nfckeychain.Drawer;
+package com.pawel.nfckeychain.CustomCreations;
 
 import android.support.annotation.StringRes;
 
@@ -12,7 +12,8 @@ public enum DrawerItems {
         ADD_MASTER_KEY(R.string.add_master),
         DOOR_STATUS(R.string.door_status),
         FORGET_EVERYTHING(R.string.forget_everything),
-        RATE_ME(R.string.rate_me);
+        MAIN_MENU(R.string.main_menu),
+        EXIT(R.string.exit);
 
 
     private int resourceId;

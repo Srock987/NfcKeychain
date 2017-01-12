@@ -9,7 +9,6 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -19,9 +18,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.pawel.nfckeychain.Guest;
+import com.pawel.nfckeychain.CustomCreations.Guest;
 import com.pawel.nfckeychain.R;
-import com.pawel.nfckeychain.Utils;
+import com.pawel.nfckeychain.CustomCreations.Utils;
 
 /**
  * Created by Pawel on 2016-12-12.
